@@ -9,11 +9,11 @@ export default function ReceivedBubbleDetail() {
   const handleYesClick = () => {
     // navigate('/exchange-form'); // exchangeform 페이지로 이동
     alert("수락되었습니다.")
-    navigate('/requested-bubbles')
+    navigate('/received-bubbles')
   };
   const handleNoClick = () => {
     alert("거절되었습니다.")
-    navigate('/requested-bubbles')
+    navigate('/received-bubbles')
   };
 
   return (
