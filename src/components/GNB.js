@@ -11,7 +11,6 @@ const GNB = () => {
 
   return (
     <>
-      {/* 되냐?2 */}
       {/* 햄버거 아이콘 */}
       <div
         onClick={toggleMenu}
