@@ -23,7 +23,12 @@ export default function TargetPage() {
       // 동그라미의 랜덤 위치 계산
       x = centerX + distance * Math.cos(angle);
       y = centerY + distance * Math.sin(angle);
-    } while (x < 0 || y < 0 || x > window.innerWidth || y > window.innerHeight);
+    } while (
+      x < 0 + buffer ||
+      y < 0 + buffer ||
+      x > window.innerWidth - buffer ||
+      y > window.innerHeight - buffer
+    );
 
     // 새로운 동그라미 추가
     setCircles([...circles, { id: circles.length, x, y }]);
@@ -34,12 +39,18 @@ export default function TargetPage() {
 
   return (
     <div className="flex justify-center items-center w-screen h-screen relative">
-      <div className="flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative">
+      <div
+        className=" flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative"
+        style={{
+          background: 'rgba(255, 255, 255, 0.5)' /* 배경 색상 및 투명도 설정 */,
+          backdropFilter: 'blur(10px)' /* 블러 효과 설정 */,
+        }}
+      >
         <div className="text-center w-[400px] h-[400px] overflow-scroll scroll-container">
           <div className="mb-4">
-            <p className="text-3xl">제목</p>
+            <p className="text-3xl text-left">제목</p>
           </div>
-          <div className="pb-4 flex justify-center items-center gap-2">
+          <div className="pb-4 flex justify-between items-center gap-2 ">
             <p>작성자 김진성 2024.08.31</p>
             <button
               onClick={handleRequestClick}
@@ -48,7 +59,7 @@ export default function TargetPage() {
               요청하기
             </button>
           </div>
-          <div className="pb-4">
+          <div className="pb-4 text-left">
             내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다니다내용입니다
           </div>
           <div className="flex justify-center">
