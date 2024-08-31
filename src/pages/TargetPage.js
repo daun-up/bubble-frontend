@@ -48,7 +48,6 @@ export default function TargetPage() {
           </div>
         </div>
       </div>
-
       {/* 중앙 원 바깥에 동그라미 렌더링 */}
       {circles.map((circle) => (
         <div
