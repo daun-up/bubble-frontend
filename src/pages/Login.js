@@ -33,9 +33,11 @@ const Login = () => {
 
       const data = await response.json();
       console.log('로그인 성공:', data);
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
-      localStorage.setItem('password', password);
+      sessionStorage.setItem('name', name);
+      sessionStorage.setItem('email', email);
+      sessionStorage.setItem('password', password);
+      sessionStorage.setItem('userId', data.userId);
+
       navigate('/');
 
       // 로그인 성공 후 처리 (예: 리다이렉트, 상태 업데이트 등)
