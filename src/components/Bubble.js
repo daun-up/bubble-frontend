@@ -20,14 +20,14 @@ export default function Bubble(props) {
     gravitation: 4,
   };
 
-  const [arr] = useState(['제목1', '제목2', '제목3', '제목4', '제목5']);
+  const [arr] = useState(['소디패 후기', '교환학생 후기', '제목3', '','제목5']);
 
   const children = arr.map((data, i) => {
     return <Child data={data} className="child" key={i} />; // Self-closing tag로 수정
   });
 
   return (
-    <BubbleUI options={options} className="myBubbleUI">
+    <BubbleUI options={options} className="w-full max-w-full h-screen bg-white">
       {children}
     </BubbleUI>
   );
