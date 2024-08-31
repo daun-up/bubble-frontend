@@ -9,7 +9,7 @@ import ManualPage from './pages/ManualPage';
 import Login from './pages/Login';
 import FormPage from './pages/FormPage';
 import ExchangeFormPage from './pages/ExchangeFormPage';
-import RequestBubblePage from './pages/RequestBubblePage';
+import ReceivedBubbleDetail from './pages/ReceivedBubbleDetail';
 import ProfilePage from './pages/ProfilePage';
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/bubble" element={<BubblePage />} />
-        <Route path="/requested-bubbles/detail" element={<RequestBubblePage />} />
+        <Route path="/received-bubbles/detail" element={<ReceivedBubbleDetail />} />
         <Route path="/received-bubbles" element={<ReceivedBubbles />} />
         <Route path="/requested-bubbles" element={<RequestedBubbles />} />
         <Route path="/my-bubbles" element={<MyBubbles />} />
