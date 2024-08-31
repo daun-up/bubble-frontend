@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BubbleBackground from '../components/BubbleBackground';
 
 const Login = () => {
@@ -7,6 +7,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   // 폼 제출 핸들러
   const handleSubmit = async e => {
@@ -32,10 +33,16 @@ const Login = () => {
 
       const data = await response.json();
       console.log('로그인 성공:', data);
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+      navigate('/');
+
       // 로그인 성공 후 처리 (예: 리다이렉트, 상태 업데이트 등)
     } catch (error) {
       // 오류 처리
       console.error('로그인 실패:', error);
+      alert('로그인 실패');
     }
   };
   return (
@@ -87,7 +94,7 @@ const Login = () => {
               onChange={e => setPassword(e.target.value)}
             />
             <input
-              className="mt-10 px-4 py-3 rounded-xl bg-[#90CCDA] text-white"
+              className="mt-10 px-4 py-3 rounded-xl bg-[#90CCDA] text-white cursor-pointer"
               style={{ border: '2px solid #90CCDA' }}
               type="submit"
               value="로그인 하기"
