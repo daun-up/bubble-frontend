@@ -37,7 +37,7 @@ const Login = () => {
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
       sessionStorage.setItem('userId', data.data.user.id);
-      console.log('userId: ', data.userId);
+      console.log('userId: ', data.data.user.id);
       navigate('/');
 
       // 로그인 성공 후 처리 (예: 리다이렉트, 상태 업데이트 등)

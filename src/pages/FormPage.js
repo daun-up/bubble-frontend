@@ -31,7 +31,7 @@ export default function FormPage() {
     formData.append('content', content);
     formData.append('preview', previewText);
     formData.append('userId', sessionStorage.getItem('userId'));
-    formData.append('tag', '');
+    formData.append('tag', 'CULTURE');
     if (selectedImage) {
       formData.append('image', selectedImage);
     }
