@@ -30,7 +30,7 @@ export default function FormPage() {
     formData.append('title', title);
     formData.append('content', content);
     formData.append('preview', previewText);
-    formData.append('userId', parseInt(sessionStorage.getItem('userId')));
+    formData.append('userId', sessionStorage.getItem('userId'));
     formData.append('tag', '');
     if (selectedImage) {
       formData.append('image', selectedImage);
