@@ -6,6 +6,7 @@ import ReceivedBubbles from './pages/ReceivedBubbles';
 import RequestedBubbles from './pages/RequestedBubbles';
 import MyBubbles from './pages/MyBubbles';
 import ManualPage from './pages/ManualPage';
+import FormPage from './pages/FormPage'
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/requested-bubbles" element={<RequestedBubbles />} />
         <Route path="/my-bubbles" element={<MyBubbles />} />
         <Route path="/manual" element={<ManualPage />} />
+        <Route path="/form" element={<FormPage />} />
       </Routes>
     </BrowserRouter>
   );
