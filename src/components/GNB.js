@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const GNB = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [name] = sessionStorage.getItem('name');
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -47,7 +47,7 @@ const GNB = () => {
                   navigate('/profile');
                 }}
               >
-                김진성
+                {name}
               </span>
             </div>
             <button
