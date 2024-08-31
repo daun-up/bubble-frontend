@@ -13,9 +13,9 @@ export default function Child({ data }) {
 
   // 배경색에 따라 글자색을 설정
   const textColor =
-    backgroundColor === '#6482AD' || backgroundColor === '#7FA1C3'
-      ? '#FFFFFF'
-      : '#000000';
+    backgroundColor === '#ECFAFE'
+      ? '#454C54'
+      : '#FFFFFF';
 
   const handleClick = () => {
     // 현재 경로가 /requested-bubbles인지 확인하고, 그렇다면 같은 경로로 이동
