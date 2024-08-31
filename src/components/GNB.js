@@ -11,6 +11,7 @@ const GNB = () => {
 
   return (
     <>
+      {/* 되냐? */}
       <div
         onClick={toggleMenu}
         className="fixed top-4 right-4 cursor-pointer z-20"
