@@ -8,6 +8,7 @@ import MyBubbles from './pages/MyBubbles';
 import ManualPage from './pages/ManualPage';
 import Login from './pages/Login';
 import FormPage from './pages/FormPage';
+import ExchangeFormPage from './pages/ExchangeFormPage';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/manual" element={<ManualPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/exchange-form" element={<ExchangeFormPage />} />
       </Routes>
     </BrowserRouter>
   );
