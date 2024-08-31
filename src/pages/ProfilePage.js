@@ -1,9 +1,14 @@
 import React from 'react';
-import profileImage from '../assets/profile.png'; // 이미지 파일을 import
+import profileImage from '../assets/profile.png';
+import GNB from '../components/GNB'; // 이미지 파일을 import
 
 export default function ProfilePage() {
   return (
     <div className="relative flex justify-center items-center w-screen h-screen overflow-clip">
+      <div className="z-30">
+        <GNB />
+      </div>
+
       {/* 배경 원들 */}
       <div className="absolute bg-transparent border border-[#90CCDA] rounded-full w-[120px] h-[120px] top-[10%] left-[6%] z-10"></div>
       <div className="absolute bg-transparent border border-[#90CCDA] rounded-full w-[300px] h-[300px] bottom-[3%] left-[10%] z-10"></div>

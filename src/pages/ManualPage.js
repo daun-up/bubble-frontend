@@ -1,10 +1,14 @@
 import React from 'react';
 import { ReactComponent as Bubble } from '../../src/assets/bubbles.svg';
+import GNB from '../components/GNB';
 
 export default function ManualPage() {
 
   return (
     <div className="flex justify-center items-center w-screen h-screen relative">
+      <div className="z-30">
+        <GNB />
+      </div>
       <div className="absolute bg-[#E3F4FA] rounded-full w-[200px] h-[200px] top-[10%] left-[5%] opacity-70"></div>
       <div className="absolute bg-[#E3F4FA] rounded-full w-[300px] h-[300px] top-[4%] right-[4%] opacity-50"></div>
       <div className="absolute bg-[#E3F4FA] rounded-full w-[150px] h-[150px] bottom-[15%] left-[15%] opacity-60"></div>

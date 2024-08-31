@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import { ReactComponent as Lock } from '../../src/assets/lock.svg';
+import GNB from '../components/GNB';
 
 export default function ReceivedBubbleDetail() {
   const navigate = useNavigate(); // useNavigate 훅 초기화
@@ -17,7 +18,11 @@ export default function ReceivedBubbleDetail() {
 
   return (
     <div className="flex justify-center items-center w-screen h-screen relative">
-      <div className="flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative">
+      <div className="z-30">
+        <GNB />
+      </div>
+      <div
+        className="flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative">
         <div className="text-center w-[400px] h-[400px] overflow-scroll ">
           <div className="mb-4">
             <p className="text-3xl">제목</p>
@@ -41,7 +46,7 @@ export default function ReceivedBubbleDetail() {
             내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다니다내용입니다
           </div>
           <div className="flex justify-center">
-          <Lock />
+            <Lock />
           </div>
         </div>
       </div>
