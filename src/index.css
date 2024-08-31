@@ -8,13 +8,16 @@
   font-family: 'laundry-gothic'; /* 사용할 폰트 이름 정의 */
   src: url('./assets/fonts/laundrygothic-bold.ttf') format('truetype'); /* 폰트 파일 경로와 형식 지정 */
 }
+
 .logo {
   font-family: 'laundry-gothic', sans-serif;
   font-size: 3rem;
 }
+
 .logo_sub {
   font-family: 'laundry-gothic', sans-serif;
 }
+
 * {
   font-family: pretendard, 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
@@ -23,4 +26,13 @@
 body {
   width: 100vw;
   height: 100vh;
+}
+
+/* 스크롤바를 숨기기 위한 스타일 */
+.scroll-container {
+  overflow: scroll; /* 스크롤 가능하게 설정 */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨기기 */
 }

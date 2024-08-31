@@ -35,7 +35,7 @@ export default function TargetPage() {
   return (
     <div className="flex justify-center items-center w-screen h-screen relative">
       <div className="flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative">
-        <div className="text-center w-[400px] h-[400px] overflow-scroll ">
+        <div className="text-center w-[400px] h-[400px] overflow-scroll scroll-container">
           <div className="mb-4">
             <p className="text-3xl">제목</p>
           </div>
