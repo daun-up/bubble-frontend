@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import { ReactComponent as Lock } from '../../src/assets/lock.svg';
 
 export default function TargetPage() {
   const [circles, setCircles] = useState([]);
+  const navigate = useNavigate(); // useNavigate 훅 초기화
+
   const makeCircle = () => {
     const centralRadius = 344; // 중앙 원의 반지름 (688px / 2)
     const buffer = 65 + 20; // 동그라미 반지름(65px) + 추가 간격 (20px)
@@ -33,8 +36,10 @@ export default function TargetPage() {
     // 새로운 동그라미 추가
     setCircles([...circles, { id: circles.length, x, y }]);
   };
+
   const handleRequestClick = () => {
     makeCircle();
+    navigate('/exchange-form'); // exchangeform 페이지로 이동
   };
 
   return (
