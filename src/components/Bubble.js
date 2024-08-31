@@ -2,6 +2,7 @@ import BubbleUI from 'react-bubble-ui';
 import 'react-bubble-ui/dist/index.css';
 import Child from './Child';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 
 export default function Bubble(props) {
   const options = {
@@ -20,6 +21,7 @@ export default function Bubble(props) {
   };
 
   const [arr, setArr] = useState([]);
+  const navigate = useNavigate(); // useNavigate 훅 초기화
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,8 +48,19 @@ export default function Bubble(props) {
     fetchData();
   }, []);
 
+  const handleBubbleClick = (id) => {
+    navigate(`/bubble/${id}`); // 클릭된 버블의 id를 포함하여 상세 페이지로 이동
+  };
+
   const children = arr.map((data, i) => {
-    return <Child data={data.title} className="child" key={i} />;
+    return (
+      <Child
+        data={data.title}
+        id={data.id} // id 전달
+        key={i}
+        onClick={() => handleBubbleClick(data.id)} // 클릭 이벤트 처리
+      />
+    );
   });
 
   return (

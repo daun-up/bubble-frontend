@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/bubble" element={<BubbleDetailPage />} />
+        <Route path="/bubble/:id" element={<BubbleDetailPage />} />
         <Route path="/received-bubbles/detail" element={<ReceivedBubbleDetail />} />
         <Route path="/received-bubbles" element={<ReceivedBubbles />} />
         <Route path="/requested-bubbles" element={<RequestedBubbles />} />

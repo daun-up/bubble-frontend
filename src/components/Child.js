@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function Child({ data }) {
+export default function Child({ data, id, defaultPath, detailPath }) {
   const navigate = useNavigate();
   const location = useLocation(); // 현재 URL 경로를 가져오는 훅
 
@@ -18,11 +18,11 @@ export default function Child({ data }) {
       : '#FFFFFF';
 
   const handleClick = () => {
-    // 현재 경로가 /requested-bubbles인지 확인하고, 그렇다면 같은 경로로 이동
-    if (location.pathname === '/received-bubbles') {
-      navigate('/received-bubbles/detail');
+    // 현재 경로에 따라 detailPath를 유동적으로 설정
+    if (location.pathname === defaultPath) {
+      navigate(`${detailPath}/${id}`);
     } else {
-      navigate('/bubble'); // 그렇지 않다면 /bubble로 이동
+      navigate(`/bubble/${id}`); // 기본적으로 /bubble/{id}로 이동
     }
   };
 
