@@ -67,11 +67,10 @@ const GNB = () => {
               방울 모아보기
             </button>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
                 navigate('/form');
@@ -80,14 +79,13 @@ const GNB = () => {
               내 경험 방울
             </button>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
-                navigate('/');
+                navigate('/form');
               }}
             >
               경험 방울 추가
