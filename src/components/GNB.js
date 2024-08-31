@@ -16,7 +16,7 @@ const GNB = () => {
         className="fixed top-4 right-4 cursor-pointer z-20"
         style={{ color: '#90CCDA' }}
       >
-        <p className="text-2xl">☰</p> {/* 햄버거 아이콘 */}
+        <p className="text-2xl">☰</p>
       </div>
       <div
         className={`fixed bg-white right-0 z-10 transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
@@ -41,7 +41,14 @@ const GNB = () => {
                 className="w-10 h-10"
                 style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
               ></div>
-              <span>김진성</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate('/profile');
+                }}
+              >
+                김진성
+              </span>
             </div>
             <button
               className="w-full hover:bg-gray-100"

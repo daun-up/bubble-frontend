@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import FormPage from './pages/FormPage';
 import ExchangeFormPage from './pages/ExchangeFormPage';
 import RequestBubblePage from './pages/RequestBubblePage';
+import ProfilePage from './pages/ProfilePage';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/manual" element={<ManualPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/exchange-form" element={<ExchangeFormPage />} />
       </Routes>
     </BrowserRouter>
