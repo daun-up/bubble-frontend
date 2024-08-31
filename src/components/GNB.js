@@ -36,62 +36,67 @@ const GNB = () => {
           className="flex flex-col w-full h-full"
           style={{ padding: '1rem 0' }}
         >
-          <div className="flex items-center m-6 gap-6">
-            <div
-              className="w-10 h-10"
-              style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
-            ></div>
-            <span>김진성</span>
+          <div
+            className="flex flex-col w-full h-full"
+            style={{ padding: '1rem 0' }}
+          >
+            <div className="flex items-center m-6 gap-6">
+              <div
+                className="w-10 h-10"
+                style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
+              ></div>
+              <span>김진성</span>
+            </div>
+            <button
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+              }}
+              onClick={() => {
+                navigate('/my-bubbles');
+              }}
+            >
+              내 경험 방울
+            </button>
+            <button
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+              }}
+              onClick={() => {
+                navigate('/received-bubbles');
+              }}
+            >
+              요청받은 방울
+            </button>
+            <button
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+              }}
+              onClick={() => {
+                navigate('/requested-bubbles');
+              }}
+            >
+              요청한 방울
+            </button>
+            <button
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+                borderBottom: '1.5px solid #90CCDA',
+              }}
+              onClick={() => {
+                navigate('/manual');
+              }}
+            >
+              사용설명
+            </button>
           </div>
-          <button
-            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
-            style={{
-              padding: '1rem 1.5rem',
-              borderTop: '1.5px solid #90CCDA',
-            }}
-            onClick={() => {
-              navigate('/my-bubbles');
-            }}
-          >
-            내 경험 방울
-          </button>
-          <button
-            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
-            style={{
-              padding: '1rem 1.5rem',
-              borderTop: '1.5px solid #90CCDA',
-            }}
-            onClick={() => {
-              navigate('/received-bubbles');
-            }}
-          >
-            요청받은 방울
-          </button>
-          <button
-            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
-            style={{
-              padding: '1rem 1.5rem',
-              borderTop: '1.5px solid #90CCDA',
-            }}
-            onClick={() => {
-              navigate('/requested-bubbles');
-            }}
-          >
-            요청한 방울
-          </button>
-          <button
-            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
-            style={{
-              padding: '1rem 1.5rem',
-              borderTop: '1.5px solid #90CCDA',
-              borderBottom: '1.5px solid #90CCDA',
-            }}
-            onClick={() => {
-              navigate('/manual');
-            }}
-          >
-            사용설명
-          </button>
         </div>
       </div>
     </>
