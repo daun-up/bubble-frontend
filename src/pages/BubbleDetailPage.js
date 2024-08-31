@@ -1,30 +1,67 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ReactComponent as Lock } from '../../src/assets/lock.svg';
 import GNB from '../components/GNB';
 
 export default function BubbleDetailPage() {
   const [circles, setCircles] = useState([]);
-  const navigate = useNavigate(); // useNavigate 훅 초기화
+  const [postData, setPostData] = useState(null);
+  const [hasAccess, setHasAccess] = useState(false);
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const baseUrl = 'http://3.37.170.109:8080'; // 실제 API 서버 주소로 변경하세요
+        const postResponse = await fetch(`${baseUrl}/api/post/${id}`);
+        const postContentType = postResponse.headers.get("content-type");
+
+        if (!postResponse.ok || !postContentType.includes("application/json")) {
+          const errorText = await postResponse.text(); // 응답을 텍스트로 읽어 오류 확인
+          throw new Error(`HTTP error! status: ${postResponse.status}, received content type: ${postContentType}, response text: ${errorText}`);
+        }
+
+        const postData = await postResponse.json();
+        if (postData.success) {
+          setPostData(postData.data);
+        } else {
+          console.error('데이터를 가져오는 중 오류 발생:', postData.message);
+        }
+
+        const userResponse = await fetch(`${baseUrl}/api/post/${id}/users`);
+        const userContentType = userResponse.headers.get("content-type");
+
+        if (!userResponse.ok || !userContentType.includes("application/json")) {
+          const errorText = await userResponse.text();
+          throw new Error(`HTTP error! status: ${userResponse.status}, received content type: ${userContentType}, response text: ${errorText}`);
+        }
+
+        const userData = await userResponse.json();
+        setHasAccess(userData); // true 또는 false 값을 저장
+      } catch (error) {
+        console.error('API 요청 오류:', error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
 
   const makeCircle = () => {
-    const centralRadius = 344; // 중앙 원의 반지름 (688px / 2)
-    const buffer = 65 + 20; // 동그라미 반지름(65px) + 추가 간격 (20px)
-    const minDistance = centralRadius + buffer; // 중앙 원 경계로부터의 최소 거리
-    const maxDistance = centralRadius + 300; // 최대 거리 (조정 가능)
+    const centralRadius = 344;
+    const buffer = 65 + 20;
+    const minDistance = centralRadius + buffer;
+    const maxDistance = centralRadius + 300;
 
-    const centerX = window.innerWidth / 2; // 화면의 가로 중앙
-    const centerY = window.innerHeight / 2; // 화면의 세로 중앙
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
 
     let x, y;
 
-    // 중앙 원 바깥의 랜덤 위치를 찾을 때까지 반복
     do {
-      const angle = Math.random() * 2 * Math.PI; // 랜덤 각도
-      const distance =
-        minDistance + Math.random() * (maxDistance - minDistance); // 거리 계산
+      const angle = Math.random() * 2 * Math.PI;
+      const distance = minDistance + Math.random() * (maxDistance - minDistance);
 
-      // 동그라미의 랜덤 위치 계산
       x = centerX + distance * Math.cos(angle);
       y = centerY + distance * Math.sin(angle);
     } while (
@@ -32,16 +69,19 @@ export default function BubbleDetailPage() {
       y < 0 + buffer ||
       x > window.innerWidth - buffer ||
       y > window.innerHeight - buffer
-    );
+      );
 
-    // 새로운 동그라미 추가
     setCircles([...circles, { id: circles.length, x, y }]);
   };
 
   const handleRequestClick = () => {
     makeCircle();
-    navigate('/exchange-form'); // exchangeform 페이지로 이동
+    navigate('/exchange-form');
   };
+
+  if (!postData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex justify-center items-center w-screen h-screen relative">
@@ -49,18 +89,18 @@ export default function BubbleDetailPage() {
         <GNB />
       </div>
       <div
-        className=" flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative"
+        className="flex flex-col justify-center items-center border-[#90CCDA] rounded-full w-[688px] h-[688px] border-2 border-solid relative"
         style={{
-          background: 'rgba(255, 255, 255, 0.5)' /* 배경 색상 및 투명도 설정 */,
-          backdropFilter: 'blur(10px)' /* 블러 효과 설정 */,
+          background: 'rgba(255, 255, 255, 0.5)',
+          backdropFilter: 'blur(10px)',
         }}
       >
         <div className="text-center w-[400px] h-[400px] overflow-scroll scroll-container">
           <div className="mb-4">
-            <p className="text-3xl text-left">제목</p>
+            <p className="text-3xl text-left">{postData.title}</p>
           </div>
-          <div className="pb-4 flex justify-between items-center gap-2 ">
-            <p>작성자 김진성 2024.08.31</p>
+          <div className="pb-4 flex justify-between items-center gap-2">
+            <p>{`작성자 ${postData.user.name} ${new Date(postData.createdAt).toLocaleDateString()}`}</p>
             <button
               onClick={handleRequestClick}
               className="px-2 py-1 bg-[#90CCDA] text-white rounded-xl"
@@ -69,15 +109,20 @@ export default function BubbleDetailPage() {
             </button>
           </div>
           <div className="pb-4 text-left">
-            내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다니다내용입니다
+            {hasAccess ? (
+              <div>{postData.content}</div>
+            ) : (
+              <Lock />
+            )}
           </div>
           <div className="flex justify-center">
-            <Lock />
+            {postData.image && (
+              <img src={postData.image} alt="content" className="w-full h-auto" />
+            )}
           </div>
         </div>
       </div>
-      {/* 중앙 원 바깥에 동그라미 렌더링 */}
-      {circles.map(circle => (
+      {circles.map((circle) => (
         <div
           key={circle.id}
           className="absolute w-[70px] h-[70px] bg-[#90CCDA] rounded-full animate-pop"
