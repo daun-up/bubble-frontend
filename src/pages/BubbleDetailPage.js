@@ -108,6 +108,9 @@ export default function BubbleDetailPage() {
               요청하기
             </button>
           </div>
+          <div>
+            <div className="pb-4 text-left">{postData.preview}</div>
+
           <div className="pb-4 text-left">
             {hasAccess ? (
               <div>{postData.content}</div>
@@ -115,7 +118,8 @@ export default function BubbleDetailPage() {
               <Lock />
             )}
           </div>
-          <div className="flex justify-center">
+          </div>
+          <div className="flex justify-center items-center w-[300px]">
             {postData.image && (
               <img src={postData.image} alt="content" className="w-full h-auto" />
             )}
