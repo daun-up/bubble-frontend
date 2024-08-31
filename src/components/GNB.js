@@ -88,6 +88,9 @@ const GNB = () => {
                 borderBottom: '1.5px solid #90CCDA',
                 color: '#90CCDA',
               }}
+              onClick={() => {
+                navigate('/manual');
+              }}
             >
               사용설명
             </button>
