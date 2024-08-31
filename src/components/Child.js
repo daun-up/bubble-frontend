@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Child({ data }) {
   const navigate = useNavigate();
+  const location = useLocation(); // 현재 URL 경로를 가져오는 훅
 
   const colors = ['#ECFAFE', '#90CCDA', '#BEDBE2']; // 사용 가능한 색상들
   const [backgroundColor] = useState(
@@ -17,7 +18,12 @@ export default function Child({ data }) {
       : '#000000';
 
   const handleClick = () => {
-    navigate('/target'); // '/target'은 이동할 페이지 경로입니다.
+    // 현재 경로가 /requested-bubbles인지 확인하고, 그렇다면 같은 경로로 이동
+    if (location.pathname === '/requested-bubbles') {
+      navigate('/requested-bubbles/detail');
+    } else {
+      navigate('/bubble'); // 그렇지 않다면 /bubble로 이동
+    }
   };
 
   useEffect(() => {
@@ -40,7 +46,7 @@ export default function Child({ data }) {
 
   return (
     <div
-      className="flex justify-center w-full h-full rounded-full cursor-pointer transform transition-transform duration-1000 hover:scale-125" // duration-1000으로 변경
+      className="flex justify-center w-full h-full rounded-full cursor-pointer transform transition-transform duration-1000 hover:scale-125"
       style={{
         backgroundColor,
         color: textColor,
