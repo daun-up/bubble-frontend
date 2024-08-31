@@ -19,8 +19,8 @@ export default function Child({ data }) {
 
   const handleClick = () => {
     // 현재 경로가 /requested-bubbles인지 확인하고, 그렇다면 같은 경로로 이동
-    if (location.pathname === '/requested-bubbles') {
-      navigate('/requested-bubbles/detail');
+    if (location.pathname === '/received-bubbles') {
+      navigate('/received-bubbles/detail');
     } else {
       navigate('/bubble'); // 그렇지 않다면 /bubble로 이동
     }

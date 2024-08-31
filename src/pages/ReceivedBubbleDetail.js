@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import { ReactComponent as Lock } from '../../src/assets/lock.svg';
 
-export default function RequestBubblePage() {
+export default function ReceivedBubbleDetail() {
   const navigate = useNavigate(); // useNavigate 훅 초기화
 
   const handleYesClick = () => {

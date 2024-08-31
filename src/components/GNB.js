@@ -61,10 +61,23 @@ const GNB = () => {
                 borderTop: '1.5px solid #90CCDA',
               }}
               onClick={() => {
+                navigate('/');
+              }}
+            >
+              방울 모두 보기
+            </button>
+            <button
+              className="w-full hover:bg-gray-100"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+                color: '#90CCDA',
+              }}
+              onClick={() => {
                 navigate('/my-bubbles');
               }}
             >
-              내 경험 방울
+              내 방울 보기
             </button>
             <button
               className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
@@ -76,7 +89,7 @@ const GNB = () => {
                 navigate('/received-bubbles');
               }}
             >
-              요청받은 방울
+              요청 받은 방울 보기
             </button>
             <button
               className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
@@ -88,7 +101,7 @@ const GNB = () => {
                 navigate('/requested-bubbles');
               }}
             >
-              요청한 방울
+              요청한 방울 보기
             </button>
             <button
               className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
