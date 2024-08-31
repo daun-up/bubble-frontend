@@ -13,15 +13,24 @@ export default function FormPage() {
   const [selectedCategory, setSelectedCategory] = useState(''); // 선택된 카테고리 상태 관리
   const categories = ['학업', '취미', '여행', '진로', '문화'];
 
+  // 카테고리 매핑
+  const categoryTagMap = {
+    '학업': 'ACADEMICS',
+    '취미': 'HOBBIES',
+    '여행': 'TRAVEL',
+    '진로': 'CAREER',
+    '문화': 'CULTURE',
+  };
+
   // 미리보기 텍스트 변경 처리
-  const handlePreviewChange = e => {
+  const handlePreviewChange = (e) => {
     if (e.target.value.length <= 150) {
       setPreviewText(e.target.value);
     }
   };
 
   // 이미지 변경 처리
-  const handleImageChange = e => {
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedImage(file);
@@ -30,13 +39,16 @@ export default function FormPage() {
 
   // 버튼 클릭 시 실행될 함수
   const handleSubmit = async () => {
+    // 선택된 카테고리에 대한 태그 가져오기
+    const selectedTag = categoryTagMap[selectedCategory] || 'Culture';
+
     // FormData 객체 생성
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
     formData.append('preview', previewText);
     formData.append('userId', sessionStorage.getItem('userId'));
-    formData.append('tag', 'CULTURE');
+    formData.append('tag', selectedTag);
     if (selectedImage) {
       formData.append('image', selectedImage);
     }
@@ -85,7 +97,7 @@ export default function FormPage() {
               type="text"
               placeholder="제목을 입력해주세요."
               value={title}
-              onChange={e => setTitle(e.target.value)} // 상태 업데이트
+              onChange={(e) => setTitle(e.target.value)} // 상태 업데이트
             />
           </div>
           {/* 카테고리 선택 */}
@@ -95,7 +107,9 @@ export default function FormPage() {
                 key={category}
                 onClick={() => handleCategoryClick(category)}
                 className={`px-4 py-1 rounded-full border border-[#90CCDA] ${
-                  selectedCategory === category ? 'bg-[#90CCDA] text-white' : 'bg-white text-[#90CCDA]'
+                  selectedCategory === category
+                    ? 'bg-[#90CCDA] text-white'
+                    : 'bg-white text-[#90CCDA]'
                 }`}
               >
                 {category}
@@ -142,7 +156,7 @@ export default function FormPage() {
               rows="5"
               placeholder="내용을 입력해주세요."
               value={content}
-              onChange={e => setContent(e.target.value)} // 상태 업데이트
+              onChange={(e) => setContent(e.target.value)} // 상태 업데이트
             />
           </div>
           <div className="flex justify-center">
