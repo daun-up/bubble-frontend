@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GNB = () => {
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -11,7 +14,7 @@ const GNB = () => {
     <>
       <div
         onClick={toggleMenu}
-        className="fixed top-4 right-4 cursor-pointer z-10"
+        className="fixed top-4 right-4 cursor-pointer z-20"
         style={{ color: '#90CCDA' }}
       >
         <p className="text-2xl">☰</p> {/* 햄버거 아이콘 */}
@@ -20,9 +23,9 @@ const GNB = () => {
         <div
           className="fixed bg-white right-0 z-10 "
           style={{
-            top: '78px', // nav의 높이만큼 아래로 위치
+            top: '0.5vh',
             width: isMenuOpen ? '30vw' : '0',
-            height: '80vh',
+            height: '99vh',
             border: '1.5px solid #90CCDA',
             borderRadius: '25px 0px 0px 25px',
           }}
@@ -45,6 +48,9 @@ const GNB = () => {
                 borderTop: '1.5px solid #90CCDA',
                 color: '#90CCDA',
               }}
+              onClick={() => {
+                navigate('/MyBubbles');
+              }}
             >
               내 경험 방울
             </button>
@@ -55,8 +61,24 @@ const GNB = () => {
                 borderTop: '1.5px solid #90CCDA',
                 color: '#90CCDA',
               }}
+              onClick={() => {
+                navigate('/ReceivedBubbles');
+              }}
             >
               요청받은 방울
+            </button>
+            <button
+              className="w-full hover:bg-gray-100"
+              style={{
+                padding: '1rem 1.5rem',
+                borderTop: '1.5px solid #90CCDA',
+                color: '#90CCDA',
+              }}
+              onClick={() => {
+                navigate('/RequestedBubbles');
+              }}
+            >
+              요청한 방울
             </button>
             <button
               className="w-full hover:bg-gray-100"
@@ -67,7 +89,7 @@ const GNB = () => {
                 color: '#90CCDA',
               }}
             >
-              요청한 방울
+              사용설명
             </button>
           </div>
         </div>
