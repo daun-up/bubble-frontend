@@ -3,8 +3,7 @@ import { ReactComponent as Lock } from '../../src/assets/lock.svg';
 
 export default function TargetPage() {
   const [circles, setCircles] = useState([]);
-
-  const handleRequestClick = () => {
+  const makeCircle = () => {
     const centralRadius = 344; // 중앙 원의 반지름 (688px / 2)
     const buffer = 65 + 20; // 동그라미 반지름(65px) + 추가 간격 (20px)
     const minDistance = centralRadius + buffer; // 중앙 원 경계로부터의 최소 거리
@@ -18,7 +17,8 @@ export default function TargetPage() {
     // 중앙 원 바깥의 랜덤 위치를 찾을 때까지 반복
     do {
       const angle = Math.random() * 2 * Math.PI; // 랜덤 각도
-      const distance = minDistance + Math.random() * (maxDistance - minDistance); // 거리 계산
+      const distance =
+        minDistance + Math.random() * (maxDistance - minDistance); // 거리 계산
 
       // 동그라미의 랜덤 위치 계산
       x = centerX + distance * Math.cos(angle);
@@ -27,6 +27,9 @@ export default function TargetPage() {
 
     // 새로운 동그라미 추가
     setCircles([...circles, { id: circles.length, x, y }]);
+  };
+  const handleRequestClick = () => {
+    makeCircle();
   };
 
   return (
@@ -38,7 +41,12 @@ export default function TargetPage() {
           </div>
           <div className="pb-4 flex justify-center items-center gap-2">
             <p>작성자 김진성 2024.08.31</p>
-            <button onClick={handleRequestClick} className="px-2 py-1 bg-[#90CCDA] text-white rounded-xl">요청하기</button>
+            <button
+              onClick={handleRequestClick}
+              className="px-2 py-1 bg-[#90CCDA] text-white rounded-xl"
+            >
+              요청하기
+            </button>
           </div>
           <div className="pb-4">
             내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다니다내용입니다
@@ -49,7 +57,7 @@ export default function TargetPage() {
         </div>
       </div>
       {/* 중앙 원 바깥에 동그라미 렌더링 */}
-      {circles.map((circle) => (
+      {circles.map(circle => (
         <div
           key={circle.id}
           className="absolute w-[70px] h-[70px] bg-[#90CCDA] rounded-full animate-pop"
