@@ -22,7 +22,7 @@ const GNB = () => {
         className={`fixed bg-white right-0 z-10 transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         style={{
           top: '0.5vh',
-          width: '30vw',
+          width: '300px',
           height: '99vh',
           border: '1.5px solid #90CCDA',
           borderRadius: '25px 0px 0px 25px',

@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
-import BubblePage from './pages/BubblePage';
+import BubbleDetailPage from './pages/BubbleDetailPage';
 import ReceivedBubbles from './pages/ReceivedBubbles';
 import RequestedBubbles from './pages/RequestedBubbles';
 import MyBubbles from './pages/MyBubbles';
@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/bubble" element={<BubblePage />} />
+        <Route path="/bubble" element={<BubbleDetailPage />} />
         <Route path="/received-bubbles/detail" element={<ReceivedBubbleDetail />} />
         <Route path="/received-bubbles" element={<ReceivedBubbles />} />
         <Route path="/requested-bubbles" element={<RequestedBubbles />} />
