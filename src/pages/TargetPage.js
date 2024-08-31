@@ -36,9 +36,9 @@ export default function TargetPage() {
           <div className="mb-4">
             <p className="text-3xl">제목</p>
           </div>
-          <div className="pb-4 flex justify-center">
+          <div className="pb-4 flex justify-center items-center gap-2">
             <p>작성자 김진성 2024.08.31</p>
-            <button onClick={handleRequestClick} className="px-2">요청하기</button>
+            <button onClick={handleRequestClick} className="px-2 py-1 bg-[#90CCDA] text-white rounded-xl">요청하기</button>
           </div>
           <div className="pb-4">
             내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다니다내용입니다
@@ -53,7 +53,7 @@ export default function TargetPage() {
       {circles.map((circle) => (
         <div
           key={circle.id}
-          className="absolute w-[50px] h-[50px] bg-[#90CCDA] rounded-full animate-pop"
+          className="absolute w-[70px] h-[70px] bg-[#90CCDA] rounded-full animate-pop"
           style={{ top: `${circle.y - 65}px`, left: `${circle.x - 65}px` }}
         ></div>
       ))}
