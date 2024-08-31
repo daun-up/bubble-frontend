@@ -36,7 +36,7 @@ const Login = () => {
       sessionStorage.setItem('name', name);
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
-      sessionStorage.setItem('userId', data.user.id);
+      sessionStorage.setItem('userId', data.data.user.id);
       console.log('userId: ', data.userId);
       navigate('/');
 
