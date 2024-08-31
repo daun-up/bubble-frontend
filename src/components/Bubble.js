@@ -37,50 +37,17 @@ export default function Bubble(props) {
       try {
         const response = await fetch(uri);
         const data = await response.json();
-        console.log(data);
+        setArr(data.data);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }
-
-      setArr([
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        'sadass',
-        '제목5',
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        '',
-        '제목5',
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        'sadass',
-        '제목5',
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        '',
-        '제목5',
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        'sadass',
-        '제목5',
-        '소디패 후기',
-        '교환학생 후기',
-        '제목3',
-        '',
-        '제목5',
-      ]);
     };
 
     fetchData();
   }, []);
 
   const children = arr.map((data, i) => {
-    return <Child data={data} className="child" key={i} />;
+    return <Child data={data.title} className="child" key={i} />;
   });
 
   return (

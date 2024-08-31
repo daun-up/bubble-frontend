@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const GNB = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [name] = sessionStorage.getItem('name');
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -41,21 +41,21 @@ const GNB = () => {
                 className="w-10 h-10"
                 style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
               ></div>
+
               <span
                 className="cursor-pointer"
                 onClick={() => {
                   navigate('/profile');
                 }}
               >
-                김진성
+                {name}
               </span>
             </div>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
                 navigate('/');
@@ -70,7 +70,7 @@ const GNB = () => {
                 borderTop: '1.5px solid #90CCDA',
               }}
               onClick={() => {
-                navigate('/form');
+                navigate('/my-bubbles');
               }}
             >
               내 경험 방울
@@ -88,11 +88,10 @@ const GNB = () => {
               경험 방울 추가
             </button>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
                 navigate('/received-bubbles');
@@ -101,11 +100,10 @@ const GNB = () => {
               요청 받은 방울
             </button>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
                 navigate('/requested-bubbles');
@@ -114,12 +112,11 @@ const GNB = () => {
               요청한 방울
             </button>
             <button
-              className="w-full hover:bg-gray-100"
+              className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
               style={{
                 padding: '1rem 1.5rem',
                 borderTop: '1.5px solid #90CCDA',
                 borderBottom: '1.5px solid #90CCDA',
-                color: '#90CCDA',
               }}
               onClick={() => {
                 navigate('/manual');
