@@ -9,7 +9,9 @@ export default function FormPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [previewText, setPreviewText] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null); // 이미지 상태 관리
+  const [selectedCategory, setSelectedCategory] = useState(''); // 선택된 카테고리 상태 관리
+  const categories = ['학업', '취미', '여행', '진로', '문화'];
 
   // 미리보기 텍스트 변경 처리
   const handlePreviewChange = e => {
@@ -60,6 +62,10 @@ export default function FormPage() {
     }
   };
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="relative flex justify-center items-center w-screen h-screen overflow-clip">
       <div className="z-30">
@@ -75,12 +81,26 @@ export default function FormPage() {
         <div className="text-center w-[550px] h-[650px] flex flex-col justify-center">
           <div>
             <input
-              className="text-3xl py-6 outline-none text-black placeholder-[#ABB4BB] w-full"
+              className="text-3xl py-3 outline-none text-black placeholder-[#ABB4BB] w-full"
               type="text"
               placeholder="제목을 입력해주세요."
               value={title}
               onChange={e => setTitle(e.target.value)} // 상태 업데이트
             />
+          </div>
+          {/* 카테고리 선택 */}
+          <div className="flex gap-1 py-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryClick(category)}
+                className={`px-4 py-1 rounded-full border border-[#90CCDA] ${
+                  selectedCategory === category ? 'bg-[#90CCDA] text-white' : 'bg-white text-[#90CCDA]'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
           {/* 사진 입력 */}
           <div className="py-4 flex items-center justify-between">
@@ -98,7 +118,7 @@ export default function FormPage() {
               className="hidden" // 숨김
             />
             {selectedImage && (
-              <div className="ml-4 w-24 h-24 overflow-hidden rounded-lg border border-gray-300">
+              <div className="pl-4 w-24 h-24 overflow-hidden rounded-lg border border-gray-300">
                 <img
                   src={URL.createObjectURL(selectedImage)}
                   alt="미리보기"
@@ -118,7 +138,7 @@ export default function FormPage() {
           </div>
           <div className="py-4">
             <textarea
-              className="outline-none text-black placeholder-[#ABB4BB] w-full h-[300px] p-2"
+              className="outline-none text-black placeholder-[#ABB4BB] w-full h-[250px] p-2"
               rows="5"
               placeholder="내용을 입력해주세요."
               value={content}
