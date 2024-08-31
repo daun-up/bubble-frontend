@@ -51,7 +51,7 @@ const GNB = () => {
                 color: '#90CCDA',
               }}
               onClick={() => {
-                navigate('/MyBubbles');
+                navigate('/my-bubbles');
               }}
             >
               내 경험 방울
@@ -64,7 +64,7 @@ const GNB = () => {
                 color: '#90CCDA',
               }}
               onClick={() => {
-                navigate('/ReceivedBubbles');
+                navigate('/received-bubbles');
               }}
             >
               요청받은 방울
@@ -77,7 +77,7 @@ const GNB = () => {
                 color: '#90CCDA',
               }}
               onClick={() => {
-                navigate('/RequestedBubbles');
+                navigate('/requested-bubbles');
               }}
             >
               요청한 방울
