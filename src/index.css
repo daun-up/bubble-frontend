@@ -8,13 +8,16 @@
   font-family: 'laundry-gothic'; /* 사용할 폰트 이름 정의 */
   src: url('./assets/fonts/laundrygothic-bold.ttf') format('truetype'); /* 폰트 파일 경로와 형식 지정 */
 }
+
 .logo {
   font-family: 'laundry-gothic', sans-serif;
   font-size: 3rem;
 }
+
 .logo_sub {
   font-family: 'laundry-gothic', sans-serif;
 }
+
 * {
   font-family: pretendard, 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
@@ -23,4 +26,75 @@
 body {
   width: 100vw;
   height: 100vh;
+}
+
+/* 스크롤바를 숨기기 위한 스타일 */
+.scroll-container {
+  overflow: scroll; /* 스크롤 가능하게 설정 */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨기기 */
+}
+
+/* bubble background */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #90ccda;
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle1 {
+  width: 60px;
+  height: 60px;
+  top: 10%;
+  left: 20%;
+  animation-duration: 8s;
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  top: 30%;
+  left: 50%;
+  animation-duration: 10s;
+}
+
+.circle3 {
+  width: 50px;
+  height: 50px;
+  top: 60%;
+  left: 70%;
+  animation-duration: 12s;
+}
+
+.circle4 {
+  width: 70px;
+  height: 70px;
+  top: 80%;
+  left: 30%;
+  animation-duration: 14s;
 }
