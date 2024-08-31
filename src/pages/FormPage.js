@@ -19,34 +19,28 @@ export default function FormPage() {
   const handleImageChange = e => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+      setSelectedImage(file);
     }
   };
 
   // 버튼 클릭 시 실행될 함수
   const handleSubmit = async () => {
-    // 요청을 보낼 데이터 구성
-    const data = {
-      title: title,
-      content: content,
-      preview: previewText,
-      userId: sessionStorage.getItem('userId'),
-      tag: '',
-      image: selectedImage,
-    };
+    // FormData 객체 생성
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('preview', previewText);
+    formData.append('userId', sessionStorage.getItem('userId'));
+    formData.append('tag', '');
+    if (selectedImage) {
+      formData.append('image', selectedImage);
+    }
 
     try {
       // fetch 요청을 POST 메서드로 전송
-      const response = await fetch(`back/api/post`, {
+      const response = await fetch('back/api/post', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // JSON 형식으로 전송
-        },
-        body: JSON.stringify(data), // 데이터를 문자열로 변환
+        body: formData, // FormData 객체를 직접 전송
       });
 
       if (response.ok) {
@@ -102,7 +96,7 @@ export default function FormPage() {
             {selectedImage && (
               <div className="ml-4 w-24 h-24 overflow-hidden rounded-lg border border-gray-300">
                 <img
-                  src={selectedImage}
+                  src={URL.createObjectURL(selectedImage)}
                   alt="미리보기"
                   className="object-cover w-full h-full"
                 />
