@@ -28,6 +28,8 @@ const GNB = () => {
           height: '99vh',
           border: '1.5px solid #90CCDA',
           borderRadius: '25px 0px 0px 25px',
+          background: 'rgba(255, 255, 255, 0.5)',
+          backdropFilter: 'blur(10px)',
         }}
       >
         <div
@@ -42,51 +44,47 @@ const GNB = () => {
             <span>김진성</span>
           </div>
           <button
-            className="w-full hover:bg-gray-100"
+            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
             style={{
               padding: '1rem 1.5rem',
               borderTop: '1.5px solid #90CCDA',
-              color: '#90CCDA',
             }}
             onClick={() => {
-              navigate('/MyBubbles');
+              navigate('/my-bubbles');
             }}
           >
             내 경험 방울
           </button>
           <button
-            className="w-full hover:bg-gray-100"
+            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
             style={{
               padding: '1rem 1.5rem',
               borderTop: '1.5px solid #90CCDA',
-              color: '#90CCDA',
             }}
             onClick={() => {
-              navigate('/ReceivedBubbles');
+              navigate('/received-bubbles');
             }}
           >
             요청받은 방울
           </button>
           <button
-            className="w-full hover:bg-gray-100"
+            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
             style={{
               padding: '1rem 1.5rem',
               borderTop: '1.5px solid #90CCDA',
-              color: '#90CCDA',
             }}
             onClick={() => {
-              navigate('/RequestedBubbles');
+              navigate('/requested-bubbles');
             }}
           >
             요청한 방울
           </button>
           <button
-            className="w-full hover:bg-gray-100"
+            className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
             style={{
               padding: '1rem 1.5rem',
               borderTop: '1.5px solid #90CCDA',
               borderBottom: '1.5px solid #90CCDA',
-              color: '#90CCDA',
             }}
             onClick={() => {
               navigate('/manual');
