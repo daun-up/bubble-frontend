@@ -2,9 +2,30 @@ import React, { useState } from 'react';
 import GNB from '../components/GNB';
 
 export default function FormPage() {
-  // input과 textarea 값을 상태로 관리
+  // 상태 관리
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [previewText, setPreviewText] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // 미리보기 텍스트 변경 처리
+  const handlePreviewChange = e => {
+    if (e.target.value.length <= 150) {
+      setPreviewText(e.target.value);
+    }
+  };
+
+  // 이미지 변경 처리
+  const handleImageChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   // 버튼 클릭 시 실행될 함수
   const handleSubmit = async () => {
@@ -12,10 +33,10 @@ export default function FormPage() {
     const data = {
       title: title,
       content: content,
-      preview: '',
+      preview: previewText,
       userId: sessionStorage.getItem('userId'),
       tag: '',
-      image: '',
+      image: selectedImage,
     };
 
     try {
@@ -38,23 +59,6 @@ export default function FormPage() {
     } catch (error) {
       // 네트워크 오류 등 처리
       console.error('요청을 보내는 중 오류 발생:', error);
-  const [previewText, setPreviewText] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null); // 이미지 상태 관리
-
-  const handlePreviewChange = (e) => {
-    if (e.target.value.length <= 150) {
-      setPreviewText(e.target.value);
-    }
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
     }
   };
 
