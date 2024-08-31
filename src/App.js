@@ -5,6 +5,7 @@ import TargetPage from './pages/TargetPage';
 import ReceivedBubbles from './pages/ReceivedBubbles';
 import RequestedBubbles from './pages/RequestedBubbles';
 import MyBubbles from './pages/MyBubbles';
+import ManualPage from './pages/ManualPage';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/ReceivedBubbles" element={<ReceivedBubbles />} />
         <Route path="/RequestedBubbles" element={<RequestedBubbles />} />
         <Route path="/MyBubbles" element={<MyBubbles />} />
+        <Route path="/manual" element={<ManualPage />} />
       </Routes>
     </BrowserRouter>
   );
