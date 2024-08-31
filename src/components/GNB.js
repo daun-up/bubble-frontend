@@ -45,7 +45,14 @@ const GNB = () => {
                 className="w-10 h-10"
                 style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
               ></div>
-              <span>김진성</span>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate('/profile');
+                }}
+              >
+                김진성
+              </span>
             </div>
             <button
               className="w-full hover:bg-[#90CCDA] text-[#90CCDA] hover:text-white"
