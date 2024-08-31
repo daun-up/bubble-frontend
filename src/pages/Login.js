@@ -8,10 +8,14 @@ const Login = () => {
       <div
         className="flex flex-col justify-around"
         style={{
-          width: '40vw',
+          width: '30vw',
           height: '90vh',
           zIndex: '10',
           position: 'relative',
+          borderRadius: '25px',
+          background: 'rgba(255, 255, 255, 0.5)' /* 배경 색상 및 투명도 설정 */,
+          backdropFilter: 'blur(10px)' /* 블러 효과 설정 */,
+          // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
         }}
       >
         {/* logo */}
