@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GNB from '../components/GNB';
 
 export default function FormPage() {
+  const [previewText, setPreviewText] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null); // 이미지 상태 관리
+
+  const handlePreviewChange = (e) => {
+    if (e.target.value.length <= 150) {
+      setPreviewText(e.target.value);
+    }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="relative flex justify-center items-center w-screen h-screen overflow-clip">
       <div className="z-30">
@@ -21,14 +41,48 @@ export default function FormPage() {
         <div className="text-center w-[550px] h-[650px] flex flex-col justify-center">
           <div>
             <input
-              className="text-3xl pb-6 outline-none text-black placeholder-[#ABB4BB] w-full"
+              className="text-3xl py-6 outline-none text-black placeholder-[#ABB4BB] w-full"
               type="text"
               placeholder="제목을 입력해주세요."
             />
           </div>
+          {/* 사진 입력 */}
+          <div className="py-4 flex items-center justify-between">
+            <label
+              className="flex justify-center items-center bg-[#90CCDA] text-white py-2 px-4 rounded cursor-pointer"
+              htmlFor="file-upload"
+            >
+              파일 업로드
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden" // 숨김
+            />
+            {selectedImage && (
+              <div className="ml-4 w-24 h-24 overflow-hidden rounded-lg border border-gray-300">
+                <img
+                  src={selectedImage}
+                  alt="미리보기"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            )}
+          </div>
           <div>
             <textarea
-              className="outline-none text-black placeholder-[#ABB4BB] w-full h-[500px] pt-6"
+              className="outline-none text-black placeholder-[#ABB4BB] w-full h-[100px] p-2"
+              rows="5"
+              placeholder="미리보기로 보여질 내용을 150 자 이내로 입력해주세요."
+              value={previewText}
+              onChange={handlePreviewChange}
+            />
+          </div>
+          <div className="py-4">
+            <textarea
+              className="outline-none text-black placeholder-[#ABB4BB] w-full h-[300px] p-2"
               rows="5"
               placeholder="내용을 입력해주세요."
             />
