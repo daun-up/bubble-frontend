@@ -70,7 +70,7 @@ const GNB = () => {
                 borderTop: '1.5px solid #90CCDA',
               }}
               onClick={() => {
-                navigate('/form');
+                navigate('/my-bubbles');
               }}
             >
               내 경험 방울

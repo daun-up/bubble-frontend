@@ -38,6 +38,8 @@ export default function Bubble(props) {
         const response = await fetch(uri);
         const data = await response.json();
         console.log(data);
+        console.log(data.data);
+        console.log(data.data[0]);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }

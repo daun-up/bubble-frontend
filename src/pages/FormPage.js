@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import GNB from '../components/GNB';
+import { useNavigate } from 'react-router-dom';
 
 export default function FormPage() {
+  const navigate = useNavigate();
+
   // 상태 관리
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -46,6 +49,7 @@ export default function FormPage() {
       if (response.ok) {
         // 요청이 성공한 경우 처리
         console.log('경험이 성공적으로 작성되었습니다.');
+        navigate('/my-bubbles');
       } else {
         // 요청이 실패한 경우 처리
         console.error('서버 오류가 발생했습니다.');
