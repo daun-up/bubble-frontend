@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/target" element={<TargetPage />} />
-        <Route path="/ReceivedBubbles" element={<ReceivedBubbles />} />
-        <Route path="/RequestedBubbles" element={<RequestedBubbles />} />
-        <Route path="/MyBubbles" element={<MyBubbles />} />
+        <Route path="/received-bubbles" element={<ReceivedBubbles />} />
+        <Route path="/requested-bubbles" element={<RequestedBubbles />} />
+        <Route path="/my-bubbles" element={<MyBubbles />} />
         <Route path="/manual" element={<ManualPage />} />
         <Route path="/form" element={<FormPage />} />
       </Routes>
