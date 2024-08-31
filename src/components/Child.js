@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Child({ data }) {
   const navigate = useNavigate();
 
-  const colors = ['#6482AD', '#E2DAD6', '#7FA1C3', '#F5EDED']; // 사용 가능한 색상들
+  const colors = ['#ECFAFE', '#90CCDA', '#BEDBE2']; // 사용 가능한 색상들
   const [backgroundColor] = useState(
     () => colors[Math.floor(Math.random() * colors.length)],
   );
