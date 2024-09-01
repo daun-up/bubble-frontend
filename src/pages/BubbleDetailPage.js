@@ -13,12 +13,12 @@ export default function BubbleDetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseUrl = 'http://3.37.170.109:8080'; // 실제 API 서버 주소로 변경하세요
+        const baseUrl = 'http://3.37.170.109:8080';
         const postResponse = await fetch(`${baseUrl}/api/post/${id}`);
         const postContentType = postResponse.headers.get("content-type");
 
         if (!postResponse.ok || !postContentType.includes("application/json")) {
-          const errorText = await postResponse.text(); // 응답을 텍스트로 읽어 오류 확인
+          const errorText = await postResponse.text();
           throw new Error(`HTTP error! status: ${postResponse.status}, received content type: ${postContentType}, response text: ${errorText}`);
         }
 
@@ -38,7 +38,7 @@ export default function BubbleDetailPage() {
         }
 
         const userData = await userResponse.json();
-        setHasAccess(userData); // true 또는 false 값을 저장
+        setHasAccess(userData);
       } catch (error) {
         console.error('API 요청 오류:', error);
       }
@@ -95,11 +95,11 @@ export default function BubbleDetailPage() {
           backdropFilter: 'blur(10px)',
         }}
       >
-        <div className="text-center w-[400px] h-[400px] overflow-scroll scroll-container">
-          <div className="mb-4">
-            <p className="text-3xl text-left">{postData.title}</p>
+        <div className="text-center w-[420px] h-[500px] overflow-scroll scroll-container">
+          <div className="pb-4">
+            <p className="text-3xl">{postData.title}</p>
           </div>
-          <div className="pb-4 flex justify-between items-center gap-2">
+          <div className="pb-4 flex items-center gap-2 justify-center">
             <p>{`작성자 ${postData.user.name} ${new Date(postData.createdAt).toLocaleDateString()}`}</p>
             <button
               onClick={handleRequestClick}
@@ -108,20 +108,25 @@ export default function BubbleDetailPage() {
               요청하기
             </button>
           </div>
-          <div>
-            <div className="pb-4 text-left">{postData.preview}</div>
 
-          <div className="pb-4 text-left">
+          {/* 미리보기 텍스트 */}
+          <div className="pb-4 text-center">
+            <p>{postData.preview}</p>
+          </div>
+
+          {/* 이미지 */}
+          <div className="flex justify-center pb-4">
+            {postData.image && (
+              <img src={postData.image} alt="content" className="w-[300px] h-auto" />
+            )}
+          </div>
+
+          {/* 본문 내용 또는 잠금 아이콘 */}
+          <div className="pb-4 text-center">
             {hasAccess ? (
               <div>{postData.content}</div>
             ) : (
               <Lock />
-            )}
-          </div>
-          </div>
-          <div className="flex justify-center items-center w-[300px]">
-            {postData.image && (
-              <img src={postData.image} alt="content" className="w-full h-auto" />
             )}
           </div>
         </div>
