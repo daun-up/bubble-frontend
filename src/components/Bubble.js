@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 
 export default function Bubble(props) {
   const userId = sessionStorage.getItem('userId');
+  const authToken = sessionStorage.getItem('authToken'); // 인증 토큰 가져오기
+
   const options = {
     size: 180,
     minSize: 20,
@@ -38,7 +40,13 @@ export default function Bubble(props) {
       }
 
       try {
-        const response = await fetch(uri);
+        const response = await fetch(uri, {
+          method: 'GET', // GET 요청
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`, // Authorization 헤더 추가
+          },
+        });
         const data = await response.json();
 
         // Ensure data.data is an array

@@ -37,6 +37,7 @@ const Login = () => {
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
       sessionStorage.setItem('userId', data.data.user.id);
+      sessionStorage.setItem('authToken', data.data.accessToken);
       console.log('userId: ', data.data.user.id);
       navigate('/');
 
