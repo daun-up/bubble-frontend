@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const GNB = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [name] = sessionStorage.getItem('name');
+  const [name] = useState(sessionStorage.getItem('name'));
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
