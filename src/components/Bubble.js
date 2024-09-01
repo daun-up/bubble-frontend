@@ -34,7 +34,7 @@ export default function Bubble(props) {
       } else if (window.location.pathname === '/requested-bubbles') {
         uri = `back/api/contract/request/${userId}`;
       } else if (window.location.pathname === '/my-bubbles') {
-        uri = `back/api/post/${userId}/users`;
+        uri = `back/api/post/user/${userId}`;
       } else if (window.location.pathname === '/') {
         uri = 'back/api/post';
       }
@@ -72,7 +72,7 @@ export default function Bubble(props) {
   const children = arr.map((data, i) => {
     return (
       <Child
-        data={data.title}
+        data={data}
         id={data.id} // id 전달
         key={i}
         onClick={() => handleBubbleClick(data.id)} // 클릭 이벤트 처리
