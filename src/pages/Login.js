@@ -55,11 +55,14 @@ const Login = () => {
       <div
         className="flex flex-col justify-around"
         style={{
-          width: '30vw',
+          maxWidth: '450px',
+          width:'100%',
           height: '90vh',
           zIndex: '10',
           position: 'relative',
           borderRadius: '25px',
+          paddingLeft:'50px',
+          paddingRight:'50px',
           background: 'rgba(255, 255, 255, 0.5)',
           backdropFilter: 'blur(10px)',
           // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
@@ -104,7 +107,7 @@ const Login = () => {
               value="로그인 하기"
             />
           </form>
-          <p className="text-right">
+          <p className="text-right font-light pt-2">
             처음이신가요? <Link to="/signup">회원가입하기</Link>
           </p>
         </div>
