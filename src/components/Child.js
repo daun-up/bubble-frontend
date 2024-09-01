@@ -12,10 +12,7 @@ export default function Child({ data, id, defaultPath, detailPath }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   // 배경색에 따라 글자색을 설정
-  const textColor =
-    backgroundColor === '#ECFAFE'
-      ? '#454C54'
-      : '#FFFFFF';
+  const textColor = backgroundColor === '#ECFAFE' ? '#454C54' : '#FFFFFF';
 
   const handleClick = () => {
     // 현재 경로에 따라 detailPath를 유동적으로 설정
@@ -52,10 +49,13 @@ export default function Child({ data, id, defaultPath, detailPath }) {
         color: textColor,
         transform: `translate(${position.x}px, ${position.y}px)`, // div의 위치를 설정
         transition: 'transform 3s linear 0s', // 부드러운 움직임을 위한 transition 추가
+        backgroundImage: `url(${data.image})`, // data.image의 URL을 배경 이미지로 설정
+        backgroundSize: 'cover', // 배경 이미지를 div 크기에 맞게 조정
+        backgroundPosition: 'center', // 배경 이미지의 위치를 중앙으로 설정
       }}
       onClick={handleClick}
     >
-      <p className="content-center">{data}</p>
+      <p className="content-center">{data.title}</p>
     </div>
   );
 }
