@@ -8,6 +8,7 @@ const GNB = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const [image] = sessionStorage.getItem('image');
 
   return (
     <>
@@ -26,6 +27,8 @@ const GNB = () => {
           height: '99vh',
           border: '1.5px solid #90CCDA',
           borderRadius: '25px 0px 0px 25px',
+          background: 'rgba(255, 255, 255, 0.5)',
+          backdropFilter: 'blur(10px)',
         }}
       >
         <div
@@ -39,7 +42,13 @@ const GNB = () => {
             <div className="flex items-center m-6 gap-6">
               <div
                 className="w-10 h-10"
-                style={{ backgroundColor: '#90CCDA', borderRadius: '25px' }}
+                style={{
+                  backgroundColor: '#90CCDA',
+                  borderRadius: '25px',
+                  backgroundImage: `url(${image})`, // data.image의 URL을 배경 이미지로 설정
+                  backgroundSize: 'cover', // 배경 이미지를 div 크기에 맞게 조정
+                  backgroundPosition: 'center', // 배경 이미지의 위치를 중앙으로 설정
+                }}
               ></div>
 
               <span
